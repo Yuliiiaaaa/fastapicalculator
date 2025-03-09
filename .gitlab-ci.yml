@@ -14,15 +14,10 @@ test_job:
       - venv/
 
   before_script:
-    - python --version  # For debugging
-    - apt-get update -y  # Обновляем список пакетов (для Debian/Ubuntu)
-    - apt-get install -y curl  # Устанавливаем curl
-    - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y # Устанавливаем Rust и Cargo
-    - export PATH="$HOME/.cargo/bin:$PATH"  # Добавляем Cargo в PATH
+    - python --version
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
-    - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
     - pip install --upgrade pip
     - pip install -r requirements.txt
 
