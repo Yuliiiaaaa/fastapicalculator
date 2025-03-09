@@ -1,30 +1,28 @@
 image: python:3.8
+
 stages:
   - test
 
-# variables:
-#  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+test_job:
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-# cache:
-#  paths:
-#    - .cache/pip
-#    - venv/
+  cache:
+    paths:
+      - .cache/pip
+      - venv/
 
-before_script:
-  - python --version # For debugging
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv\Scripts\activate
-  - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
-  - pip install -r requirements.txt
- 
-   
-   
+  before_script:
+    - python --version  # For debugging
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/Scripts/activate
+    - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
+    - pip install -r requirements.txt
 
-
-test:
   stage: test
   script:
+    - echo "Hello, world!"
     - pytest
-    - flake8 .
-    - mypy .
+    - flake8
+    - mypy
