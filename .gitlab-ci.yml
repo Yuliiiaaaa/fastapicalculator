@@ -28,6 +28,9 @@ test_job:
 
   script:
     - echo "Hello, world!"
+     - pip install pytest
+    - pip install flake8
+    - pip install mypy
     - pytest
     - flake8
     - mypy
