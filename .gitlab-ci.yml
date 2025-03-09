@@ -22,7 +22,6 @@ test_job:
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
-    - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
     - pip install --upgrade pip
     - pip install -r requirements.txt
 
