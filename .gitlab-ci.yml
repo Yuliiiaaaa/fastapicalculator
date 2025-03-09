@@ -23,6 +23,6 @@ test_job:
 
   script:
     - echo "Hello, world!"
-    - pytest
+    - venv/bin/pytest
     - flake8
     - mypy
