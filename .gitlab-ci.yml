@@ -16,6 +16,7 @@ test_job:
   before_script:
     - python --version  # For debugging
     - pip install virtualenv
+    - pip install pytest  # <-- Добавлено!
     - virtualenv venv
     - source venv/bin/activate  # <-- Изменено!
     - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
@@ -23,6 +24,6 @@ test_job:
 
   script:
     - echo "Hello, world!"
-    - venv/bin/pytest
+    - pytest
     - flake8
     - mypy
