@@ -17,7 +17,7 @@ test_job:
     - python --version  # For debugging
     - pip install virtualenv
     - virtualenv venv
-    - source venv/Scripts/activate
+    - source venv/bin/activate  # <-- Изменено!
     - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
     - pip install -r requirements.txt
 
