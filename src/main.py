@@ -17,7 +17,7 @@ async def calculate(operation: Operation) -> Dict[str, Union[float, Dict[str, st
     x = operation.x
     y = operation.y
 
-    result = None
+    result: Union[float, None] = None
 
     if operation_type == "add":
         result = x + y
