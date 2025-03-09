@@ -13,14 +13,13 @@ test_job:
       - .cache/pip
       - venv/
 
-before_script:
-  - python --version
-  - pip install --upgrade pip
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
-  - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
-  - pip install -r requirements.txt
+  before_script:
+    - python --version  # For debugging
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate  # <-- Изменено!
+    - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator
+    - pip install -r requirements.txt
 
   script:
     - echo "Hello, world!"
