@@ -31,7 +31,7 @@ async def calculate(operation: Operation):
         result = x / y
     elif operation_type == "square_root":
         if x < 0:
-            return {"error": "Cannot take square root of a negative number"}
+            return {"error": "root of a negative number"}
         result = x ** 0.5
     else:
         return {"error": "Invalid operation type"}
