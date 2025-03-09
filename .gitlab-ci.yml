@@ -1,28 +1,26 @@
 image: python:3.8
+
 stages:
   - test
 
 # variables:
-#  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+#   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"  # Раскомментируйте, если нужен кэш
 
-# cache:
-#  paths:
-#    - .cache/pip
-#    - venv/
+# cache:   # Раскомментируйте, если нужен кэш
+#   paths:
+#     - .cache/pip
+#     - venv/
 
 before_script:
-  - python --version # For debugging
+  - python --version  # For debugging
   - pip install virtualenv
   - virtualenv venv
-  - source venv/bin/activate
+  - source venv\Scripts\activate  # Или venv\Scripts\activate, если используете Windows-раннер
   - pip install -r requirements.txt
- 
-   
-
 
 test:
   stage: test
   script:
-    - pytest
-    - flake8 .
-    - mypy .
+    - pytest tests  # Запускаем тесты в папке tests
+    - flake8 src tests  # Проверяем код в папках src и tests
+    - mypy src   # Проверяем типы в папке src
