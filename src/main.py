@@ -1,12 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+
 app = FastAPI()
+
 
 class Operation(BaseModel):
     operation_type: str
     x: float
-    y: float = None 
+    y: float = None
+
 
 @app.post("/calculate")
 async def calculate(operation: Operation):
@@ -32,5 +35,4 @@ async def calculate(operation: Operation):
         result = x ** 0.5
     else:
         return {"error": "Invalid operation type"}
-
     return {"result": result}
