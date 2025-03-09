@@ -14,8 +14,8 @@ before_script:
   - python --version # For debugging
   - pip install virtualenv
   - virtualenv venv
-  - source venv/bin/activate
-  - export PYTHONPATH=$PYTHONPATH: 
+  - source venv\Scripts\activate
+  - export PYTHONPATH=$PYTHONPATH:/builds/lollolol/fastapi-calculator/src
   - pip install -r requirements.txt
  
    
