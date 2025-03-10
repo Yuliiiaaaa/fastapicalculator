@@ -35,5 +35,4 @@ async def calculate(operation: Operation):
         result = x ** 0.5
     else:
         return {"error": "Invalid operation type"}
-
     return {"result": result}
