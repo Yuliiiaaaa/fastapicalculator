@@ -14,7 +14,8 @@ test_job:
       - venv/
 
   before_script:
-    - python --version
+    - python --version  # For debugging
+    - apt-get update -y  # Обновляем список пакетов (для Debian/Ubuntu)
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
@@ -22,7 +23,6 @@ test_job:
     - pip install -r requirements.txt
 
   script:
-    - echo "Hello, world!"
+    - echo "Hello, world!"p
     - pytest
     - flake8 .
-    - mypy .

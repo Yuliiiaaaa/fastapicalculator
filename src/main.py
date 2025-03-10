@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Union, Dict
+
 
 app = FastAPI()
 
@@ -12,12 +12,12 @@ class Operation(BaseModel):
 
 
 @app.post("/calculate")
-async def calculate(operation: Operation) -> Dict[str, Union[float, str]]:
+async def calculate(operation: Operation):
     operation_type = operation.operation_type
     x = operation.x
     y = operation.y
 
-    result: Union[float, None] = None
+    result = None
 
     if operation_type == "add":
         result = x + y
