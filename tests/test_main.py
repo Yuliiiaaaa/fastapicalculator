@@ -44,7 +44,7 @@ def test_square_root():
 def test_square_root_negative():
     response = client.post("/calculate", json={"operation_type": "square_root", "x": -1})
     assert response.status_code == 200
-    assert response.json() == {"error": "square root of a negative number"}
+    assert response.json() == {"error": "root of a negative number"}
 
 
 def test_invalid_operation():
