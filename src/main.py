@@ -1,38 +1,35 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Dict, Union
 
 
-app = FastAPI()
+app = FastAPI()  # Создание экземпляра приложения FastAPI
 
 
-class Operation(BaseModel):
-    operation_type: str
-    x: float
-    y: float = None
+class CalculationRequest(BaseModel):  # Определение модели запроса
+    operation: str
+    a: float
+    b: float
 
 
-@app.post("/calculate")
-async def calculate(operation: Operation):
-    operation_type = operation.operation_type
-    x = operation.x
-    y = operation.y
-
-    result = None
-
-    if operation_type == "add":
-        result = x + y
-    elif operation_type == "subtract":
-        result = x - y
-    elif operation_type == "multiply":
-        result = x * y
-    elif operation_type == "divide":
-        if y == 0:
-            return {"error": "Cannot divide by zero"}
-        result = x / y
-    elif operation_type == "square_root":
-        if x < 0:
-            return {"error": "root of a negative number"}
-        result = x ** 0.5
+@app.post("/calculate/")
+def calculate(
+    request: CalculationRequest
+) -> Union[Dict[str, float], Dict[str, str]]:
+    if request.operation == "add":
+        return {"result": request.a + request.b}
+    elif request.operation == "subtract":
+        return {"result": request.a - request.b}
+    elif request.operation == "multiply":
+        return {"result": request.a * request.b}
+    elif request.operation == "divide":
+        if request.b == 0:
+            return {"error": "Division by zero is not allowed."}
+        return {"result": request.a / request.b}
     else:
-        return {"error": "Invalid operation type"}
-    return {"result": result}
+        return {"error": "Unsupported operation."}
+
+
+if __name__ == "__main__":  # Запуск приложения
+    import uvicorn
+    uvicorn.run(app, host="194.226.28.81", port=8000)
